@@ -71,13 +71,16 @@ export class JobScheduler {
     this.cronTasks.push(cronTask);
   }
 
-  private runJob(name: string, jobFn: () => void): void | Promise<void> {
+  private runJob(
+    name: string,
+    jobFn: () => void | Promise<void>
+  ): void | Promise<void> {
     const startTime = Date.now();
     this.logger?.info(`JOB START ${name}`);
 
-    const handleTransaction = (transaction?: Transaction) => {
+    const handleTransaction = async (transaction?: Transaction) => {
       try {
-        jobFn();
+        await jobFn();
 
         transaction?.setStatus(TransactionStatus.Ok);
 
