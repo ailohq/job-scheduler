@@ -1,6 +1,6 @@
 {
   "name": "@ailo/job-scheduler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Async job scheduler powered by node-cron",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
